@@ -42,7 +42,7 @@ angular.module('ngCart', ['ngCart.directives'])
 
             var inCart = this.getItemById(id);
 
-            if (typeof inCart === 'object'){
+            if (angular.isObject(inCart)){
                 //Update quantity of an item if it's already in the cart
                 inCart.setQuantity(quantity, false);
                 $rootScope.$broadcast('ngCart:itemUpdated', inCart);
@@ -318,7 +318,7 @@ angular.module('ngCart', ['ngCart.directives'])
 
             set: function (key, val) {
 
-                if (val === undefined) {
+                if (angular.isUndefined(val) {
                     $window.localStorage.removeItem(key);
                 } else {
                     $window.localStorage.setItem( key, angular.toJson(val) );
@@ -357,7 +357,7 @@ angular.module('ngCart.directives', ['ngCart.fulfilment'])
             },
             transclude: true,
             templateUrl: function(element, attrs) {
-                if ( typeof attrs.templateUrl == 'undefined' ) {
+                if ( angular.isUndefined(attrs.templateUrl) ) {
                     return 'template/ngCart/addtocart.html';
                 } else {
                     return attrs.templateUrl;
@@ -391,7 +391,7 @@ angular.module('ngCart.directives', ['ngCart.fulfilment'])
             controller : 'CartController',
             scope: {},
             templateUrl: function(element, attrs) {
-                if ( typeof attrs.templateUrl == 'undefined' ) {
+                if ( angular.isUndefined(attrs.templateUrl) ) {
                     return 'template/ngCart/cart.html';
                 } else {
                     return attrs.templateUrl;
@@ -410,7 +410,7 @@ angular.module('ngCart.directives', ['ngCart.fulfilment'])
             scope: {},
             transclude: true,
             templateUrl: function(element, attrs) {
-                if ( typeof attrs.templateUrl == 'undefined' ) {
+                if ( angular.isUndefined(attrs.templateUrl) ) {
                     return 'template/ngCart/summary.html';
                 } else {
                     return attrs.templateUrl;
@@ -446,7 +446,7 @@ angular.module('ngCart.directives', ['ngCart.fulfilment'])
             },
             transclude: true,
             templateUrl: function(element, attrs) {
-                if ( typeof attrs.templateUrl == 'undefined' ) {
+                if ( angular.isUndefined(attrs.templateUrl) ) {
                     return 'template/ngCart/checkout.html';
                 } else {
                     return attrs.templateUrl;
